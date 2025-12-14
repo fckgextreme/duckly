@@ -1246,9 +1246,12 @@ app.put('/api/admin/user/:userId/password', checkAdmin, async (req, res) => {
 
 
 initDb().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Auth server running on http://localhost:${PORT}`);
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`✅ Auth server running on http://0.0.0.0:${PORT}`);
+    console.log(`   Local: http://localhost:${PORT}`);
+    console.log(`   Network: http://193.39.68.185:${PORT}`);
   });
 }).catch(err => {
-  console.error('Failed to initialize DB', err);
+  console.error('❌ Failed to initialize DB', err);
+  process.exit(1);
 });
