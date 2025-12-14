@@ -626,12 +626,12 @@ app.get('/api/subscriptions', async (req, res) => {
   }
 });
 
-const publicPath = path.resolve(__dirname, '..', '..', 'public');
+const publicPath = path.resolve(process.cwd(), 'public');
 if (fs.existsSync(publicPath)) {
   app.use(express.static(publicPath));
 }
 
-const frontendPath = path.resolve(__dirname, '..', '..', 'dist');
+const frontendPath = path.resolve(process.cwd(), 'dist');
 if (fs.existsSync(frontendPath)) {
   app.use(express.static(frontendPath));
   app.get('*', (_, res) => {

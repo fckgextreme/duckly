@@ -7,7 +7,7 @@ let db: Database<sqlite3.Database, sqlite3.Statement> | null = null;
 
 
 export async function initDb() {
-const dbPath = path.resolve(__dirname, '..', '..', 'data', 'auth.db');
+const dbPath = path.resolve(process.cwd(), 'data', 'auth.db');
 db = await open({ filename: dbPath, driver: sqlite3.Database });
 
 

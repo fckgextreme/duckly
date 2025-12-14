@@ -1,13 +1,20 @@
 {
     "name": "auth-backend",
+    "type": "module",
     "version": "1.0.0",
-    "main": "dist/server.js",
+    "main": "dist-server/server.js",
     "scripts": {
         "dev": "ts-node-dev --respawn --transpile-only src/assets/server.ts",
         "dev:frontend": "vite --port 5173",
         "dev:full": "concurrently \"npm run dev\" \"npm run dev:frontend\"",
-        "build": "tsc",
-        "start": "node dist/server.js"
+        "build": "npm run build:server && npm run build:frontend",
+        "build:server": "tsc",
+        "build:frontend": "vite build",
+        "start": "node dist-server/server.js",
+        "pm2:start": "pm2 start ecosystem.config.js",
+        "pm2:stop": "pm2 stop duckkly",
+        "pm2:restart": "pm2 restart duckkly",
+        "pm2:logs": "pm2 logs duckkly"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^7.0.1",
