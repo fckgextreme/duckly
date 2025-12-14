@@ -5,12 +5,12 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   server: {
-    host: true,
+    host: '0.0.0.0', // Позволяет доступ с других устройств в сети
     port: 5173,
     strictPort: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:5174',
+        target: 'http://localhost:8080', // Порт Express сервера
         changeOrigin: true,
       },
     },
